@@ -47,6 +47,7 @@ Parallel.prototype.bind = function (obj) {
  * @return {Parallel}
  */
 
+Parallel.prototype.push =
 Parallel.prototype.add = function (fn) {
   this.fns.push({
     fn: fn,
@@ -64,7 +65,7 @@ Parallel.prototype.add = function (fn) {
  * @return {Parallel}
  */
 
-Parallel.prototype.run = function () {
+Parallel.prototype.end = function () {
   var last = arguments.length - 1;
   var args = 1 == arguments.length ? [] : [].slice.call(arguments, 0, last);
   var callback = arguments[last];

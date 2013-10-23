@@ -27,6 +27,11 @@ describe('parallel', function () {
       var p = parallel();
       assert(p == p.add(function(){}));
     });
+
+    it('should be aliased to #push', function () {
+      var p = parallel();
+      assert(p.add = p.push);
+    });
   });
 
   describe('#bind', function () {
@@ -42,13 +47,13 @@ describe('parallel', function () {
     });
   });
 
-  describe('#run', function () {
+  describe('#end', function () {
     it('should call a handler', function (done) {
       parallel()
         .add(function (callback) {
           callback(null, 'result');
         })
-        .run(function (err, res) {
+        .end(function (err, res) {
           assert('result' == res[0]);
           done();
         });
@@ -68,7 +73,7 @@ describe('parallel', function () {
           value++;
           callback();
         })
-        .run(done);
+        .end(done);
     });
 
     it('should pass args to the handlers', function (done) {
@@ -83,7 +88,7 @@ describe('parallel', function () {
           assert(b == 'b');
           callback();
         })
-        .run('a', 'b', done);
+        .end('a', 'b', done);
     });
 
     it('should pass function-specific args if they exist', function (done) {
@@ -99,7 +104,7 @@ describe('parallel', function () {
           assert(b == 'b');
           callback();
         })
-        .run('a', 'b', done);
+        .end('a', 'b', done);
     });
 
     it('should bind to a context', function (done) {
@@ -110,7 +115,7 @@ describe('parallel', function () {
           assert(obj == this);
           callback();
         })
-        .run(done);
+        .end(done);
     });
 
     it('should exit early on errors', function (done) {
@@ -122,7 +127,7 @@ describe('parallel', function () {
         .add(function (callback) {
           assert(false);
         })
-        .run(function (err, res) {
+        .end(function (err, res) {
           assert(err == error);
           done();
         });
@@ -130,7 +135,7 @@ describe('parallel', function () {
 
     it('should be chainable', function () {
       var p = parallel();
-      assert(p == p.run());
+      assert(p == p.end());
     });
   });
 });

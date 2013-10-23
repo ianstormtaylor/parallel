@@ -2,7 +2,7 @@
   "name": "parallel",
   "repo": "ianstormtaylor/parallel",
   "description": "A simple API for running async functions in parallel.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "keywords": [
     "function",
