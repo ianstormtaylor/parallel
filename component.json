@@ -1,0 +1,22 @@
+{
+  "name": "parallel",
+  "repo": "ianstormtaylor/parallel",
+  "description": "A simple API for running async functions in parallel.",
+  "version": "0.0.1",
+  "license": "MIT",
+  "keywords": [
+    "function",
+    "async",
+    "parallel",
+    "series"
+  ],
+  "dependencies": {
+    "component/each": "*",
+    "visionmedia/batch": "*"
+  },
+  "development": {
+    "component/assert": "*",
+    "timoxley/next-tick": "*"
+  },
+  "scripts": ["index.js"]
+}
